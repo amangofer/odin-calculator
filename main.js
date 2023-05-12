@@ -60,6 +60,7 @@ const minus = document.getElementById('minus');
 const division = document.getElementById('division');
 const times = document.getElementById('times');
 const modulo = document.getElementById('modulo');
+const equals = document.getElementById('equals');
 
 let list = [];
 const operators = /\+|\_|\x|\//;
@@ -151,3 +152,40 @@ times.addEventListener('click', ()=>{
         current.textContent = "";
     }
 });
+
+equals.addEventListener('click', equal);
+
+function equal(){
+    if(current.textContent !== ""){
+        list.push(current.textContent);
+        while(list.length > 1){
+            for(let i = 0; i < list.length; i++){
+                if(list[i] == "*" || list[i] == "/"){
+                    if(list[i+1] == "0"){
+                        current.textContent = "Hahaa Your Dumb!";
+                        last.textContent = "";
+                        list = [];
+                        return;
+                    } else{
+                        const result = operate(list[i],parseFloat(list[i-1]), parseFloat(list[i+1]));
+                        list.splice(i-1, i+1);
+                        list.splice(i-1,i,result);
+                        i = 0;
+                    }
+                }
+            }
+            for(let i = 0; i < list.length; i++){
+                if(list[i] == "+" || list[i] == "_"){
+                    const result = operate(list[i], parseFloat(list[i-1]), parseFloat(list[i+1]));
+                    list.splice(i-1, i+1);
+                    list.splice(i-1,i,result);
+                    i = 0;
+                }
+            }
+            
+        }
+    }
+    last.textContent = "";
+    current.textContent = list[0];
+    list = [];
+}
