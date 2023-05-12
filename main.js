@@ -49,10 +49,20 @@ const seven = document.getElementById('seven');
 const eight = document.getElementById('eight');
 const nine = document.getElementById('nine');
 const zero = document.getElementById('zero');
+const dot = document.getElementById('dot');
 
 const clear = document.getElementById('clear');
 const sign = document.getElementById('sign');
 const del = document.getElementById("delete");
+
+const plus = document.getElementById('plus');
+const minus = document.getElementById('minus');
+const division = document.getElementById('division');
+const times = document.getElementById('times');
+const modulo = document.getElementById('modulo');
+
+let list = [];
+const operators = /\+|\_|\x|\//;
 
 one.addEventListener('click', ()=>{
     current.textContent += "1";
@@ -105,3 +115,39 @@ sign.addEventListener('click', () => {
 del.addEventListener('click', ()=> {
     current.textContent = current.textContent.substring(0,current.textContent.length - 1);
 })
+
+plus.addEventListener('click', ()=>{
+    if (current.textContent !== ""){
+        last.textContent += current.textContent + "+" ;
+        list.push(...current.textContent.split(operators))
+        list.push("+")
+        current.textContent = "";
+    }
+});
+
+minus.addEventListener('click', ()=>{
+    if (current.textContent !== ""){
+        last.textContent += current.textContent + "-";
+        list.push(...current.textContent.split(operators));
+        list.push("_");
+        current.textContent = "";
+    }
+});
+
+division.addEventListener('click', ()=>{
+    if(current.textContent !== ""){
+        last.textContent += current.textContent + "/";
+        list.push(...current.textContent.split(operators))
+        list.push("/")
+        current.textContent = "";
+    }
+});
+
+times.addEventListener('click', ()=>{
+    if(current.textContent !== ""){
+        last.textContent += current.textContent + "x";
+        list.push(...current.textContent.split(operators))
+        list.push("*")
+        current.textContent = "";
+    }
+});
