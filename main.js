@@ -189,3 +189,26 @@ function equal(){
     current.textContent = list[0];
     list = [];
 }
+
+// make the calculator using keyboard
+window.document.addEventListener('keydown', (e)=>{
+
+    if(e.key >= "0" && e.key <= "9"){
+        current.textContent += e.key
+    }else if(e.key == "Backspace"){
+        current.textContent = current.textContent.substring(0,current.textContent.length - 1);
+    }else if(current.textContent !== "" && (e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/')){
+        last.textContent = current.textContent + e.key;
+        list.push(...current.textContent.split(e.key));
+        current.textContent = "";
+        list.push(e.key == '-' ? '_' : e.key);
+    } else if (e.key == '%'){
+        current.textContent = moduloOpp(parseFloat(current.textContent));
+    } else if(e.key == "Enter"){
+        equal();
+    } else if(e.key == "Escape"){
+        current.textContent = "";
+        last.textContent = "";
+        list = [];
+    }
+})
