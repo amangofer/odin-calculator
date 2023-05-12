@@ -36,3 +36,51 @@ function operate(opp, num1, num2){
     }
 
 }
+
+const current = document.querySelector('.current');
+const last = document.querySelector('.last');
+const one = document.getElementById('one');
+const two = document.getElementById('two');
+const three = document.getElementById('three');
+const four = document.getElementById('four');
+const five = document.getElementById('five');
+const six = document.getElementById('six');
+const seven = document.getElementById('seven');
+const eight = document.getElementById('eight');
+const nine = document.getElementById('nine');
+const zero = document.getElementById('zero');
+
+one.addEventListener('click', ()=>{
+    current.textContent += "1";
+});
+two.addEventListener('click', ()=>{
+    current.textContent += "2";
+});
+three.addEventListener('click', ()=>{
+    current.textContent += "3";
+});
+four.addEventListener('click', ()=>{
+    current.textContent += "4";
+});
+five.addEventListener('click', ()=>{
+    current.textContent += "5";
+});
+six.addEventListener('click', ()=>{
+    current.textContent += "6";
+});
+seven.addEventListener('click', ()=>{
+    current.textContent += "7";
+});
+eight.addEventListener('click', ()=>{
+    current.textContent += "8";
+});
+nine.addEventListener('click', ()=>{
+    current.textContent += "9";
+});
+zero.addEventListener('click', ()=>{
+    current.textContent += current.textContent !== "0" ? "0" : "";
+});
+dot.addEventListener('click', ()=>{
+    current.textContent += current.textContent.indexOf(".") > -1 ? "": ".";
+});
+
