@@ -115,7 +115,11 @@ sign.addEventListener('click', () => {
 // deletes number from the last
 del.addEventListener('click', ()=> {
     current.textContent = current.textContent.substring(0,current.textContent.length - 1);
-})
+});
+
+modulo.addEventListener("click", ()=>{
+    current.textContent = moduloOpp(parseFloat(current.textContent));
+}); 
 
 plus.addEventListener('click', ()=>{
     if (current.textContent !== ""){
