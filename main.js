@@ -50,6 +50,10 @@ const eight = document.getElementById('eight');
 const nine = document.getElementById('nine');
 const zero = document.getElementById('zero');
 
+const clear = document.getElementById('clear');
+const sign = document.getElementById('sign');
+const del = document.getElementById("delete");
+
 one.addEventListener('click', ()=>{
     current.textContent += "1";
 });
@@ -84,3 +88,20 @@ dot.addEventListener('click', ()=>{
     current.textContent += current.textContent.indexOf(".") > -1 ? "": ".";
 });
 
+// clears the whole screen
+clear.addEventListener('click', ()=>{
+    current.textContent = "";
+    last.textContent = "";
+    list = [];
+});
+
+// adds/removes negative sign from a number
+sign.addEventListener('click', () => {
+    current.textContent = current.textContent.charAt(0) !== "-" ? "-" + current.textContent 
+        : current.textContent.charAt(0) === "-" ? current.textContent.substring(1) : current.textContent;
+});
+
+// deletes number from the last
+del.addEventListener('click', ()=> {
+    current.textContent = current.textContent.substring(0,current.textContent.length - 1);
+})
